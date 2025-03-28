@@ -1,0 +1,174 @@
+/* Common */
+QWidget {
+    font-family: "Meiryo UI";
+    font-size: 10pt;
+    color: white;
+    background-color: #212121;
+}
+
+/* Labels */
+QLabel#droppable {
+    color: white;
+    background-color: #303030;
+    border: 1px solid #373737;
+    border-radius: 5px;
+}
+
+QLabel#droppable[dragging="true"] {
+    background-color: #2C2C2C;
+    border: 1px solid #4CC2FF;
+}
+
+/* Buttons */
+QPushButton, QComboBox, QComboBox QAbstractItemView {
+    color: white;
+    background-color: #2D2D2D;
+    border: 1px solid #373737;
+    border-bottom: 1px solid #333333;
+    border-radius: 5px;
+}
+
+QPushButton:hover, QSpinBox::up-button:hover, QSpinBox::down-button:hover {
+    background-color: #343433;
+}
+
+QPushButton:pressed, QSpinBox::up-button:pressed, QSpinBox::up-button:pressed, QPushButton:disabled {
+    color: #D7D7D7;
+    background-color: #282827;
+    border: 1px solid #343433;
+}
+
+QPushButton#accent {
+    color: black;
+    background-color: #4CC2FF;
+    border: 1px solid #5FD3FF;
+    border-bottom: 1px solid #42A7DC;
+}
+
+QPushButton:hover#accent {
+    background-color: #47B1E8;
+}
+
+QPushButton:pressed#accent, QPushButton:disabled#accent {
+    color: #204E65;
+    background-color: #43A1D2;
+    border: 1px solid #45AADF;
+}
+
+QPushButton#folder {
+    image: url(difference_viewer/resources/images/folder.ico);
+}
+
+QPushButton#reload {
+    background-color: none;
+    border-radius: 5px;
+    border: none;
+    image: url(difference_viewer/resources/images/circle_arrow_white.ico);
+}
+
+QPushButton:hover#reload {
+    background-color: #2E3132;
+}
+
+QPushButton:pressed#reload {
+    background-color: #292B2C;
+}
+
+QPushButton#pref {
+    background-color: none;
+    border-radius: 5px;
+    border: none;
+    image: url(difference_viewer/resources/images/gear_white.ico);
+}
+
+QPushButton:hover#pref {
+    background-color: #2E3132;
+}
+
+QPushButton:pressed#pref {
+    background-color: #292B2C;
+}
+
+QPushButton#color {
+    border-radius: 5px;
+    border: none;
+}
+
+QComboBox::drop-down {
+    image: url(difference_viewer/resources/images/down_arrow_white.ico);
+    height: 30px;
+}
+
+/* Inputs */
+QLineEdit, QSpinBox {
+    color: white;
+    background-color: #303030;
+    border: 1px solid #373737;
+    border-bottom: 1px solid #A7A7A7;
+    border-radius: 5px;
+    padding: 0px 5px;
+}
+
+QLineEdit:focus, QSpinBox:focus {
+    border-bottom: 2px solid #4CC2FF;
+}
+
+QSpinBox::up-button {
+    image: url(difference_viewer/resources/images/up_arrow_white.ico);
+    border-left: 1px solid #373737;
+    border-bottom: 1px solid #373737;
+}
+
+QSpinBox::down-button {
+    image: url(difference_viewer/resources/images/down_arrow_white.ico);
+    border-left: 1px solid #373737;
+    margin-bottom: 1px;
+}
+
+/* Graphics */
+QGraphicsView#droppable {
+    background-color: #303030;
+    border: 1px solid #373737;
+    border-radius: 5px;
+}
+
+QGraphicsView#droppable[dragging="true"] {
+    background-color: #2C2C2C;
+    border: 1px solid #4CC2FF;
+}
+
+/* Scroll Bars */
+QScrollBar:vertical {
+    background-color: #303030;
+    width: 15px;
+}
+
+QScrollBar:horizontal {
+    background-color: #303030;
+    height: 15px;
+}
+
+QScrollBar::handle:vertical, QScrollBar::handle:horizontal {
+    background-color: #A7A7A7;
+    border-radius: 2px;
+    margin: 5px;
+}
+
+QScrollBar::up-arrow:vertical, QScrollBar::down-arrow:vertical, QScrollBar::up-arrow:horizontal, QScrollBar::down-arrow:horizontal {
+    border: none;
+    background-color: none;
+}
+
+QScrollBar::add-line:vertical, QScrollBar::sub-line:vertical, QScrollBar::add-line:horizontal, QScrollBar::sub-line:horizontal {
+    border: none;
+}
+
+QScrollBar::add-page:vertical, QScrollBar::sub-page:vertical, QScrollBar::add-page:horizontal, QScrollBar::sub-page:horizontal  {
+    background-color: none;
+}
+
+/* Lines */
+QFrame#line {
+    border: 2px solid #373737;
+    border-radius: 1px;
+}
