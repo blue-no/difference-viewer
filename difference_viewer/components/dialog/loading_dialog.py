@@ -33,6 +33,14 @@ class LoadingDialog(QProgressDialog):
         self.setAutoClose(False)
         self.setValue(0)
 
+        self.setStyleSheet(
+            """
+            QPushButton {
+                min-width: 80px;
+            }
+            """
+        )
+
     def update(self) -> None:
         self.setValue(min(self.value() + 1, self.maximum()))
 
