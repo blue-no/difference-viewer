@@ -72,7 +72,7 @@ QPushButton:pressed#icon {
 
 QComboBox::drop-down {
     image: url(difference_viewer/resources/icons/light/down_arrow.ico);
-    height: 30px;
+    height: 28px;
 }
 
 /* Inputs */
