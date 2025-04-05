@@ -40,6 +40,7 @@ from PyQt5.QtWidgets import (
 from difference_viewer.app.config import AppConfig
 from difference_viewer.components.display.display_vm import DisplayViewModel
 from difference_viewer.core.converter import ConverterFactory
+from difference_viewer.widgets.patch import patch_button_padding_click_detection
 
 
 class DisplayView(QWidget):
@@ -58,6 +59,8 @@ class DisplayView(QWidget):
         self._vm.zoom_requested.connect(self._apply_zoom)
         self._vm.scroll_requested.connect(self._apply_scroll)
         self._init_ui()
+        
+        patch_button_padding_click_detection(self)
 
     def _init_ui(self) -> None:
         uic.loadUi(AppConfig.resource_directory / "display.ui", self)
