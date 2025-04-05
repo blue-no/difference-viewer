@@ -32,7 +32,7 @@ class PrefsWindow(AutoResizedWidget):
         super().__init__(fixSize=True)
         self._vm = vm
         self._init_ui()
-        
+
         patch_button_padding_click_detection(self)
 
     def _init_ui(self) -> None:
@@ -68,7 +68,7 @@ class PrefsWindow(AutoResizedWidget):
         self.cbbTheme.addItem("ダーク", Theme.DARK.value)
         self.cbbTheme.addItem("システム設定", Theme.SYSTEM.value)
 
-        self.btnLineColor.setObjectName("color")
+        self.btnLineColor.setObjectName("icon")
         self.btnOK.setObjectName("accent")
 
         self.btnLineColor.clicked.connect(self._select_line_color_with_dialog)

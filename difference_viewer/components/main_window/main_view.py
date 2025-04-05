@@ -19,10 +19,10 @@ from typing import Literal
 
 from PyQt5 import uic
 from PyQt5.QtCore import Qt
-from PyQt5.QtGui import QKeyEvent, QMouseEvent
+from PyQt5.QtGui import QIcon, QKeyEvent, QMouseEvent
 from PyQt5.QtWidgets import QBoxLayout, QFrame, QLabel, QPushButton, QWidget
 
-from difference_viewer.app.config import AppConfig
+from difference_viewer.app.config import AppConfig, get_resource_icon_path
 from difference_viewer.components.main_window.main_vm import MainWindowViewModel
 from difference_viewer.widgets.autoresized import AutoResizedMainWindow
 from difference_viewer.widgets.patch import patch_button_padding_click_detection
@@ -62,8 +62,16 @@ class MainWindow(AutoResizedMainWindow):
         self.btnSyncTurnPrev.setObjectName("accent")
         self.btnSyncTurnNext.setObjectName("accent")
         self.btnSyncTurnLast.setObjectName("accent")
-        self.btnOpenPrefs.setObjectName("pref")
+        self.btnOpenPrefs.setObjectName("icon")
         self.frame.setObjectName("line")
+
+        self.btnOpenPrefs.setIcon(
+            QIcon(
+                get_resource_icon_path(
+                    AppConfig.current_theme.value + "/gear"
+                ).as_posix()
+            )
+        )
 
         self.btnSyncTurnFirst.clicked.connect(
             self._vm.turn_first_requested.emit
