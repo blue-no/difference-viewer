@@ -17,10 +17,10 @@ from __future__ import annotations
 
 from PyQt5 import uic
 from PyQt5.QtCore import pyqtSlot
-from PyQt5.QtGui import QIntValidator
+from PyQt5.QtGui import QIcon, QIntValidator
 from PyQt5.QtWidgets import QLabel, QLineEdit, QPushButton, QVBoxLayout, QWidget
 
-from difference_viewer.app.config import AppConfig
+from difference_viewer.app.config import AppConfig, get_resource_icon_path
 from difference_viewer.components.page.page_vm import PageViewModel
 from difference_viewer.widgets.patch import patch_button_padding_click_detection
 
@@ -50,6 +50,10 @@ class PageView(QWidget):
         self.lblTotalPage: QLabel
         self.lytPage: QVBoxLayout
 
+        self.btnSelectFile.setIcon(
+            QIcon(get_resource_icon_path("folder").as_posix())
+        )
+
         self.page_validator = QIntValidator()
         self.txtCurPage.setValidator(self.page_validator)
 
@@ -61,8 +65,7 @@ class PageView(QWidget):
         self.btnTurnLast.clicked.connect(self._vm.turn_last)
         self.txtCurPage.editingFinished.connect(self._on_page_editing_finished)
 
-        self.btnSelectFile.setObjectName("folder")
-        self.btnReload.setObjectName("reload")
+        self.btnReload.setObjectName("icon")
 
         self.txtFilePath.setReadOnly(True)
         self.lblTotalPage.setText("-")
@@ -70,6 +73,11 @@ class PageView(QWidget):
 
     def put_widget(self, widget: QWidget) -> None:
         self.lytPage.addWidget(widget)
+
+    def apply_icon_style(self, name: str) -> None:
+        self.btnReload.setIcon(
+            QIcon(get_resource_icon_path(name + "/circle_arrow").as_posix())
+        )
 
     @pyqtSlot()
     def _update_file_info(self) -> None:

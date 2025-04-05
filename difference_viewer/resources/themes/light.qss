@@ -56,48 +56,23 @@ QPushButton:pressed#accent, QPushButton:disabled#accent {
     border: 1px solid #227AC6;
 }
 
-QPushButton#folder {
-    image: url(difference_viewer/resources/images/folder.ico);
-}
-
-QPushButton#reload {
+QPushButton#icon {
     background-color: none;
     border: none;
     padding: 5px;
-    image: url(difference_viewer/resources/images/circle_arrow_black.ico);
 }
 
-QPushButton:hover#reload {
+QPushButton:hover#icon {
     background-color: #E9E9E8;
 }
 
-QPushButton:pressed#reload {
+QPushButton:pressed#icon {
     background-color: #EBEAEA;
-}
-
-QPushButton#pref {
-    background-color: none;
-    border: none;
-    padding: 5px;
-    image: url(difference_viewer/resources/images/gear_black.ico);
-}
-
-QPushButton:hover#pref {
-    background-color: #E9E9E8;
-}
-
-QPushButton:pressed#pref {
-    background-color: #EBEAEA;
-}
-
-QPushButton#color {
-    border-radius: 5px;
-    border: none;
 }
 
 QComboBox::drop-down {
-    image: url(difference_viewer/resources/images/down_arrow_black.ico);
-    height: 30px;
+    image: url(difference_viewer/resources/icons/light/down_arrow.ico);
+    height: 28px;
 }
 
 /* Inputs */
@@ -115,13 +90,13 @@ QLineEdit:focus, QSpinBox:focus {
 }
 
 QSpinBox::up-button {
-    image: url(difference_viewer/resources/images/up_arrow_black.ico);
+    image: url(difference_viewer/resources/icons/light/up_arrow.ico);
     border-left: 1px solid #E0E0DE;
     border-bottom: 1px solid #E0E0DE;
 }
 
 QSpinBox::down-button {
-    image: url(difference_viewer/resources/images/down_arrow_black.ico);
+    image: url(difference_viewer/resources/icons/light/down_arrow.ico);
     border-left: 1px solid #E0E0DE;
     margin-bottom: 1px;
 }

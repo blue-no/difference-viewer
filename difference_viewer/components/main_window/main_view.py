@@ -19,10 +19,10 @@ from typing import Literal
 
 from PyQt5 import uic
 from PyQt5.QtCore import Qt
-from PyQt5.QtGui import QKeyEvent, QMouseEvent
+from PyQt5.QtGui import QIcon, QKeyEvent, QMouseEvent
 from PyQt5.QtWidgets import QBoxLayout, QFrame, QLabel, QPushButton, QWidget
 
-from difference_viewer.app.config import AppConfig
+from difference_viewer.app.config import AppConfig, get_resource_icon_path
 from difference_viewer.components.main_window.main_vm import MainWindowViewModel
 from difference_viewer.widgets.autoresized import AutoResizedMainWindow
 from difference_viewer.widgets.patch import patch_button_padding_click_detection
@@ -62,7 +62,7 @@ class MainWindow(AutoResizedMainWindow):
         self.btnSyncTurnPrev.setObjectName("accent")
         self.btnSyncTurnNext.setObjectName("accent")
         self.btnSyncTurnLast.setObjectName("accent")
-        self.btnOpenPrefs.setObjectName("pref")
+        self.btnOpenPrefs.setObjectName("icon")
         self.frame.setObjectName("line")
 
         self.btnSyncTurnFirst.clicked.connect(
@@ -99,6 +99,11 @@ class MainWindow(AutoResizedMainWindow):
             self.lytPageR.addWidget(widget)
         else:
             raise ValueError(f"Invalid location: {loc}")
+
+    def apply_icon_style(self, name: str) -> None:
+        self.btnOpenPrefs.setIcon(
+            QIcon(get_resource_icon_path(name + "/gear").as_posix())
+        )
 
     def _update_label_visibility(self, target: str, visible: bool) -> None:
         self.labels[target].setVisible(visible)

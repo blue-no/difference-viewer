@@ -32,8 +32,12 @@ class PrefsWindow(AutoResizedWidget):
         super().__init__(fixSize=True)
         self._vm = vm
         self._init_ui()
-        
+
         patch_button_padding_click_detection(self)
+
+    def show(self) -> None:
+        self._init_values()
+        super().show()
 
     def _init_ui(self) -> None:
         uic.loadUi(AppConfig.resource_directory / "prefs_window.ui", self)
@@ -68,7 +72,7 @@ class PrefsWindow(AutoResizedWidget):
         self.cbbTheme.addItem("ダーク", Theme.DARK.value)
         self.cbbTheme.addItem("システム設定", Theme.SYSTEM.value)
 
-        self.btnLineColor.setObjectName("color")
+        self.btnLineColor.setObjectName("icon")
         self.btnOK.setObjectName("accent")
 
         self.btnLineColor.clicked.connect(self._select_line_color_with_dialog)
@@ -84,13 +88,14 @@ class PrefsWindow(AutoResizedWidget):
             )
         )
         self.cbbTheme.currentIndexChanged.connect(
-            lambda i: self._vm.update_theme(self.cbbTheme.itemData(i))
+            lambda i: self._vm.update_window_style(self.cbbTheme.itemData(i))
         )
 
         self.btnOK.clicked.connect(self._save_and_exit)
         self.btnCancel.clicked.connect(self._discard_and_exit)
         self.closeEvent = lambda _: self._discard_and_exit()
 
+    def _init_values(self) -> None:
         self._set_line_color(self._vm.line_color)
         self.spbLineWidth.setValue(self._vm.line_width)
         self.spbBoxPadding.setValue(self._vm.bbox_padding)
