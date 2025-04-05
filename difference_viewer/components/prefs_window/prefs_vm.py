@@ -19,7 +19,7 @@ from dataclasses import asdict
 
 from PyQt5.QtCore import QObject, pyqtSignal
 
-from difference_viewer.app.config import AppConfig, Theme, UserConfig
+from difference_viewer.app.config import AppConfig, UserConfig
 
 
 class PrefsViewModel(QObject):
@@ -59,7 +59,7 @@ class PrefsViewModel(QObject):
                 self._config.bbox_merge_level = merge_level
         self.bbox_style_changed.emit()
 
-    def update_theme(self, theme: str) -> None:
+    def update_window_style(self, theme: str) -> None:
         self._config.theme = theme
         self.window_style_changed.emit()
 
@@ -74,7 +74,7 @@ class PrefsViewModel(QObject):
             padding=self._default_config.bbox_padding,
             merge_level=self._default_config.bbox_merge_level,
         )
-        self.update_theme(self._default_config.theme)
+        self.update_window_style(self._default_config.theme)
 
     @property
     def line_color(self) -> str:
