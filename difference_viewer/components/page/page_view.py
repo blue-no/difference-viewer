@@ -22,6 +22,7 @@ from PyQt5.QtWidgets import QLabel, QLineEdit, QPushButton, QVBoxLayout, QWidget
 
 from difference_viewer.app.config import AppConfig
 from difference_viewer.components.page.page_vm import PageViewModel
+from difference_viewer.widgets.patch import patch_button_padding_click_detection
 
 
 class PageView(QWidget):
@@ -32,8 +33,9 @@ class PageView(QWidget):
         self._vm.loading_finished.connect(self._enable_widgets)
         self._vm.loading_finished.connect(self._update_file_info)
         self._vm.image_updated.connect(self._update_page_info)
-
         self._init_ui()
+
+        patch_button_padding_click_detection(self)
 
     def _init_ui(self) -> None:
         uic.loadUi(AppConfig.resource_directory / "page.ui", self)

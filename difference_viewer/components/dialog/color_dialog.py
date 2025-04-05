@@ -17,7 +17,10 @@ from __future__ import annotations
 
 from PyQt5.QtCore import Qt
 from PyQt5.QtGui import QColor
-from PyQt5.QtWidgets import QColorDialog, QPushButton
+from PyQt5.QtWidgets import QColorDialog
+
+from difference_viewer.app.config import AppConfig
+from difference_viewer.widgets.patch import patch_button_padding_click_detection
 
 
 class ColorDialog(QColorDialog):
@@ -29,16 +32,15 @@ class ColorDialog(QColorDialog):
         if default_color is not None:
             self.setCurrentColor(QColor(default_color))
 
-        self.setStyleSheet(
-            """
-            QPushButton {
-                min-width: 80px;
-            }
-            QSpinBox {
-                max-width: 50px;
-            }
-            """
-        )
+        patch_button_padding_click_detection(self)
+
+        qss_fp = AppConfig.resource_directory / "styles" / "dialog.qss"
+        try:
+            with qss_fp.open("r", encoding="utf-8") as f:
+                style = f.read()
+            self.setStyleSheet(style)
+        except FileNotFoundError:
+            pass
 
     def get_hex(self) -> str:
         return self.selectedColor().name()

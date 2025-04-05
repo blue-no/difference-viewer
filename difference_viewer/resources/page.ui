@@ -32,16 +32,10 @@
        </property>
        <item>
         <widget class="QPushButton" name="btnSelectFile">
-         <property name="sizePolicy">
-          <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-           <horstretch>0</horstretch>
-           <verstretch>0</verstretch>
-          </sizepolicy>
-         </property>
          <property name="minimumSize">
           <size>
            <width>75</width>
-           <height>30</height>
+           <height>0</height>
           </size>
          </property>
          <property name="toolTip">
@@ -54,24 +48,6 @@
        </item>
        <item>
         <widget class="QLineEdit" name="txtFilePath">
-         <property name="sizePolicy">
-          <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
-           <horstretch>0</horstretch>
-           <verstretch>0</verstretch>
-          </sizepolicy>
-         </property>
-         <property name="minimumSize">
-          <size>
-           <width>0</width>
-           <height>30</height>
-          </size>
-         </property>
-         <property name="maximumSize">
-          <size>
-           <width>16777215</width>
-           <height>30</height>
-          </size>
-         </property>
          <property name="readOnly">
           <bool>true</bool>
          </property>
@@ -79,22 +55,10 @@
        </item>
        <item>
         <widget class="QPushButton" name="btnReload">
-         <property name="sizePolicy">
-          <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-           <horstretch>0</horstretch>
-           <verstretch>0</verstretch>
-          </sizepolicy>
-         </property>
-         <property name="minimumSize">
-          <size>
-           <width>30</width>
-           <height>30</height>
-          </size>
-         </property>
          <property name="maximumSize">
           <size>
-           <width>30</width>
-           <height>30</height>
+           <width>32</width>
+           <height>16777215</height>
           </size>
          </property>
          <property name="toolTip">
@@ -134,16 +98,10 @@
        </item>
        <item>
         <widget class="QPushButton" name="btnTurnFirst">
-         <property name="sizePolicy">
-          <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-           <horstretch>0</horstretch>
-           <verstretch>0</verstretch>
-          </sizepolicy>
-         </property>
          <property name="minimumSize">
           <size>
            <width>85</width>
-           <height>30</height>
+           <height>0</height>
           </size>
          </property>
          <property name="toolTip">
@@ -156,16 +114,10 @@
        </item>
        <item>
         <widget class="QPushButton" name="btnTurnPrev">
-         <property name="sizePolicy">
-          <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-           <horstretch>0</horstretch>
-           <verstretch>0</verstretch>
-          </sizepolicy>
-         </property>
          <property name="minimumSize">
           <size>
            <width>85</width>
-           <height>30</height>
+           <height>0</height>
           </size>
          </property>
          <property name="toolTip">
@@ -181,24 +133,6 @@
        </item>
        <item>
         <widget class="QLabel" name="label">
-         <property name="sizePolicy">
-          <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-           <horstretch>0</horstretch>
-           <verstretch>0</verstretch>
-          </sizepolicy>
-         </property>
-         <property name="minimumSize">
-          <size>
-           <width>10</width>
-           <height>30</height>
-          </size>
-         </property>
-         <property name="maximumSize">
-          <size>
-           <width>10</width>
-           <height>30</height>
-          </size>
-         </property>
          <property name="text">
           <string>/</string>
          </property>
@@ -206,22 +140,10 @@
        </item>
        <item>
         <widget class="QLineEdit" name="txtCurPage">
-         <property name="sizePolicy">
-          <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
-           <horstretch>0</horstretch>
-           <verstretch>0</verstretch>
-          </sizepolicy>
-         </property>
-         <property name="minimumSize">
-          <size>
-           <width>60</width>
-           <height>30</height>
-          </size>
-         </property>
          <property name="maximumSize">
           <size>
            <width>60</width>
-           <height>30</height>
+           <height>16777215</height>
           </size>
          </property>
          <property name="acceptDrops">
@@ -231,24 +153,6 @@
        </item>
        <item>
         <widget class="QLabel" name="lblTotalPage">
-         <property name="sizePolicy">
-          <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-           <horstretch>0</horstretch>
-           <verstretch>0</verstretch>
-          </sizepolicy>
-         </property>
-         <property name="minimumSize">
-          <size>
-           <width>60</width>
-           <height>30</height>
-          </size>
-         </property>
-         <property name="maximumSize">
-          <size>
-           <width>60</width>
-           <height>30</height>
-          </size>
-         </property>
          <property name="text">
           <string>TextLabel</string>
          </property>
@@ -256,16 +160,10 @@
        </item>
        <item>
         <widget class="QPushButton" name="btnTurnNext">
-         <property name="sizePolicy">
-          <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-           <horstretch>0</horstretch>
-           <verstretch>0</verstretch>
-          </sizepolicy>
-         </property>
          <property name="minimumSize">
           <size>
            <width>85</width>
-           <height>30</height>
+           <height>0</height>
           </size>
          </property>
          <property name="toolTip">
@@ -281,16 +179,10 @@
        </item>
        <item>
         <widget class="QPushButton" name="btnTurnLast">
-         <property name="sizePolicy">
-          <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-           <horstretch>0</horstretch>
-           <verstretch>0</verstretch>
-          </sizepolicy>
-         </property>
          <property name="minimumSize">
           <size>
            <width>85</width>
-           <height>30</height>
+           <height>0</height>
           </size>
          </property>
          <property name="toolTip">

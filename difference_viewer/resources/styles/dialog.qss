@@ -1,0 +1,6 @@
+QPushButton {
+    min-width: 80px;
+}
+QSpinBox {
+    max-width: 60px;
+}

@@ -79,13 +79,7 @@
           <property name="minimumSize">
            <size>
             <width>85</width>
-            <height>30</height>
-           </size>
-          </property>
-          <property name="maximumSize">
-           <size>
-            <width>80</width>
-            <height>30</height>
+            <height>0</height>
            </size>
           </property>
           <property name="toolTip">
@@ -101,13 +95,7 @@
           <property name="minimumSize">
            <size>
             <width>85</width>
-            <height>30</height>
-           </size>
-          </property>
-          <property name="maximumSize">
-           <size>
-            <width>80</width>
-            <height>30</height>
+            <height>0</height>
            </size>
           </property>
           <property name="toolTip">
@@ -136,16 +124,10 @@
         </item>
         <item>
          <widget class="QPushButton" name="btnOpenPrefs">
-          <property name="minimumSize">
-           <size>
-            <width>30</width>
-            <height>30</height>
-           </size>
-          </property>
           <property name="maximumSize">
            <size>
-            <width>30</width>
-            <height>30</height>
+            <width>32</width>
+            <height>16777215</height>
            </size>
           </property>
           <property name="toolTip">
@@ -190,29 +172,11 @@
         </property>
         <item>
          <widget class="QPushButton" name="btnFitPage">
-          <property name="sizePolicy">
-           <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-            <horstretch>0</horstretch>
-            <verstretch>0</verstretch>
-           </sizepolicy>
-          </property>
-          <property name="minimumSize">
-           <size>
-            <width>110</width>
-            <height>30</height>
-           </size>
-          </property>
-          <property name="maximumSize">
-           <size>
-            <width>16777215</width>
-            <height>30</height>
-           </size>
-          </property>
           <property name="toolTip">
            <string>ページを画面にフィット</string>
           </property>
           <property name="text">
-           <string>  画面にフィット  </string>
+           <string>画面にフィット</string>
           </property>
          </widget>
         </item>
@@ -234,13 +198,7 @@
           <property name="minimumSize">
            <size>
             <width>85</width>
-            <height>30</height>
-           </size>
-          </property>
-          <property name="maximumSize">
-           <size>
-            <width>80</width>
-            <height>30</height>
+            <height>0</height>
            </size>
           </property>
           <property name="toolTip">
@@ -256,13 +214,7 @@
           <property name="minimumSize">
            <size>
             <width>85</width>
-            <height>30</height>
-           </size>
-          </property>
-          <property name="maximumSize">
-           <size>
-            <width>80</width>
-            <height>30</height>
+            <height>0</height>
            </size>
           </property>
           <property name="toolTip">
