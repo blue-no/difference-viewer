@@ -15,21 +15,7 @@
 
 from __future__ import annotations
 
-from PyQt5.QtCore import Qt
-from PyQt5.QtGui import QPixmap, QScreen
-from PyQt5.QtWidgets import QMainWindow, QSplashScreen, QWidget
-
-
-class AutoResizedSplashScreen(QSplashScreen):
-    def __init__(self, pixmap: QPixmap, screen: QScreen) -> None:
-        dpi_ratio = screen.devicePixelRatio()
-        scaled_pixmap = pixmap.scaled(
-            pixmap.width() * dpi_ratio,
-            pixmap.height() * dpi_ratio,
-            Qt.KeepAspectRatio,
-            Qt.SmoothTransformation,
-        )
-        super().__init__(scaled_pixmap)
+from PyQt5.QtWidgets import QMainWindow, QWidget
 
 
 class AutoResizedWidget(QWidget):

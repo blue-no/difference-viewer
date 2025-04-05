@@ -20,17 +20,12 @@ from typing import Literal
 from PyQt5 import uic
 from PyQt5.QtCore import Qt
 from PyQt5.QtGui import QKeyEvent, QMouseEvent
-from PyQt5.QtWidgets import (
-    QBoxLayout,
-    QFrame,
-    QLabel,
-    QPushButton,
-    QWidget,
-)
+from PyQt5.QtWidgets import QBoxLayout, QFrame, QLabel, QPushButton, QWidget
 
 from difference_viewer.app.config import AppConfig
 from difference_viewer.components.main_window.main_vm import MainWindowViewModel
 from difference_viewer.widgets.autoresized import AutoResizedMainWindow
+from difference_viewer.widgets.patch import patch_button_padding_click_detection
 
 
 class MainWindow(AutoResizedMainWindow):
@@ -38,8 +33,6 @@ class MainWindow(AutoResizedMainWindow):
     def __init__(self, vm: MainWindowViewModel) -> None:
         super().__init__()
         self._vm = vm
-
-        self._init_ui()
         self._vm.warninig_visiblity_changed.connect(
             lambda t, v: self._update_label_visibility(t, v)
         )
@@ -47,6 +40,9 @@ class MainWindow(AutoResizedMainWindow):
             lambda t, e: self._update_button_state(t, e)
         )
         self._vm.window_state_changed.connect(self._update_window_state)
+        self._init_ui()
+
+        patch_button_padding_click_detection(self)
 
     def _init_ui(self) -> None:
         uic.loadUi(AppConfig.resource_directory / "main_window.ui", self)

@@ -23,6 +23,7 @@ from difference_viewer.app.config import AppConfig, Theme
 from difference_viewer.components.dialog.color_dialog import ColorDialog
 from difference_viewer.components.prefs_window.prefs_vm import PrefsViewModel
 from difference_viewer.widgets.autoresized import AutoResizedWidget
+from difference_viewer.widgets.patch import patch_button_padding_click_detection
 
 
 class PrefsWindow(AutoResizedWidget):
@@ -31,6 +32,8 @@ class PrefsWindow(AutoResizedWidget):
         super().__init__(fixSize=True)
         self._vm = vm
         self._init_ui()
+        
+        patch_button_padding_click_detection(self)
 
     def _init_ui(self) -> None:
         uic.loadUi(AppConfig.resource_directory / "prefs_window.ui", self)
@@ -58,9 +61,9 @@ class PrefsWindow(AutoResizedWidget):
             AppConfig.min_bbox_padding,
             AppConfig.max_bbox_padding,
         )
-        self.cbbBoxMergeLevel.addItem("無効", 0)
-        self.cbbBoxMergeLevel.addItem("1段階", 1)
-        self.cbbBoxMergeLevel.addItem("2段階", 2)
+        self.cbbBoxMergeLevel.addItem("なし", 0)
+        self.cbbBoxMergeLevel.addItem("1回", 1)
+        self.cbbBoxMergeLevel.addItem("2回", 2)
         self.cbbTheme.addItem("ライト", Theme.LIGHT.value)
         self.cbbTheme.addItem("ダーク", Theme.DARK.value)
         self.cbbTheme.addItem("システム設定", Theme.SYSTEM.value)

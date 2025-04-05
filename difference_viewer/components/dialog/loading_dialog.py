@@ -18,6 +18,9 @@ from __future__ import annotations
 from PyQt5.QtCore import Qt
 from PyQt5.QtWidgets import QProgressDialog
 
+from difference_viewer.app.config import AppConfig
+from difference_viewer.widgets.patch import patch_button_padding_click_detection
+
 
 class LoadingDialog(QProgressDialog):
 
@@ -33,13 +36,15 @@ class LoadingDialog(QProgressDialog):
         self.setAutoClose(False)
         self.setValue(0)
 
-        self.setStyleSheet(
-            """
-            QPushButton {
-                min-width: 80px;
-            }
-            """
-        )
+        patch_button_padding_click_detection(self)
+
+        qss_fp = AppConfig.resource_directory / "styles" / "dialog.qss"
+        try:
+            with qss_fp.open("r", encoding="utf-8") as f:
+                style = f.read()
+            self.setStyleSheet(style)
+        except FileNotFoundError:
+            pass
 
     def update(self) -> None:
         self.setValue(min(self.value() + 1, self.maximum()))
