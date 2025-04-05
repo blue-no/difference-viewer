@@ -21,7 +21,7 @@ import sys
 from PyQt5.QtGui import QPixmap
 from PyQt5.QtWidgets import QApplication, QSplashScreen
 
-from difference_viewer.app.config import AppConfig
+from difference_viewer.app.config import get_resource_icon_path
 
 
 def main() -> None:
@@ -45,9 +45,7 @@ def main() -> None:
 
     # show splash screen
     try:
-        splash_fp = (
-            AppConfig.resource_directory / "images" / "splash_screen.ico"
-        )
+        splash_fp = get_resource_icon_path("splash_screen")
         if not splash_fp.is_file():
             raise FileNotFoundError(filename=splash_fp)
         pixmap = QPixmap(splash_fp.as_posix())
@@ -62,6 +60,7 @@ def main() -> None:
 
     from difference_viewer.app.app import AppController
     from difference_viewer.app.config import (
+        AppConfig,
         Theme,
         UserConfig,
         apply_theme,
@@ -84,8 +83,7 @@ def main() -> None:
         logger.warning(f'Failed to load and apply style sheet: "{e}"')
 
     try:
-        icon_fp = AppConfig.resource_directory / "images" / "favicon.ico"
-        app.setWindowIcon(QIcon(icon_fp.as_posix()))
+        app.setWindowIcon(QIcon(get_resource_icon_path("favicon").as_posix()))
     except Exception as e:
         logger.warning(f'Failed to set icon: "{e}"')
 

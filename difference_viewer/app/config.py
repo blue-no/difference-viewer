@@ -26,7 +26,40 @@ from enum import Enum
 from pathlib import Path
 from typing import Any, ClassVar
 
-from PyQt5.QtWidgets import QApplication
+from PyQt5.QtWidgets import QApplication, QWidget
+
+
+def get_resource_icon_path(name: str) -> Path:
+    return (AppConfig.resource_directory / "icons" / name).with_suffix(".ico")
+
+
+def get_resource_style_path(name: str) -> Path:
+    return (AppConfig.resource_directory / "styles" / name).with_suffix(".qss")
+
+
+def get_resource_theme_path(name: str) -> Path:
+    return (AppConfig.resource_directory / "themes" / name).with_suffix(".qss")
+
+
+def apply_style(style: str, widget: QWidget) -> None:
+    style_fp = get_resource_style_path(style)
+    try:
+        with style_fp.open("r", encoding="utf-8") as f:
+            style_qss = f.read()
+        widget.setStyleSheet(style_qss)
+    except FileNotFoundError:
+        logging.warning(f"Style file not found: {style_fp}")
+
+
+def apply_theme(theme: Theme) -> None:
+    theme_fp = get_resource_theme_path(theme.value)
+    try:
+        with theme_fp.open("r", encoding="utf-8") as f:
+            theme_qss = f.read()
+        QApplication.instance().setStyleSheet(theme_qss)
+        AppConfig.current_theme = theme
+    except FileNotFoundError:
+        logging.warning(f"Theme file not found: {theme_fp}")
 
 
 class Theme(Enum):
@@ -47,15 +80,6 @@ def get_system_theme() -> Theme:
                 return Theme.LIGHT
     except Exception:
         return Theme.LIGHT
-
-
-def apply_theme(theme: Theme) -> None:
-    if theme == Theme.SYSTEM:
-        theme = get_system_theme()
-    qss_fp = AppConfig.resource_directory / "styles" / (theme.value + ".qss")
-    with qss_fp.open("r", encoding="utf-8") as f:
-        style = f.read()
-    QApplication.instance().setStyleSheet(style)
 
 
 class AppConfig:
@@ -81,6 +105,8 @@ class AppConfig:
     max_bbox_padding = 20
     min_bbox_padding = -10
     bbox_merge_levels = [0, 1, 2, 3]
+
+    current_theme = Theme.SYSTEM
 
     __logger = logging.getLogger("AppConfig")
 
@@ -148,6 +174,7 @@ class UserConfig:
             data = cls._load_default()
             try:
                 data.save(fp)
+                cls.__logger.info("Default config loaded")
             except Exception:
                 pass
 
@@ -174,7 +201,6 @@ class UserConfig:
             bbox_merge_level=1,
             theme="system",
         )
-        cls.__logger.info("Default config loaded")
         return data
 
 
