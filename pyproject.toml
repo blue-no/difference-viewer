@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "difference-viewer"
-version = "0.1.1"
+version = "0.2.0"
 description = "A graphical tool for comparing documents"
 authors = ["Blueno <k.pg.blueno@gmail.com>"]
 license = "GPLv3"
