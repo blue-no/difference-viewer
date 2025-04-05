@@ -17,7 +17,7 @@ from __future__ import annotations
 
 import logging
 
-from difference_viewer.app.config import UserConfig
+from difference_viewer.app.config import Theme, UserConfig, apply_theme
 from difference_viewer.components.display.display_model import DisplayModel
 from difference_viewer.components.display.display_view import DisplayView
 from difference_viewer.components.display.display_vm import DisplayViewModel
@@ -116,8 +116,9 @@ class AppController:
         self.page_vm2.image_updated.connect(self._update_display)
         self.prefs_vm.bbox_style_changed.connect(self._update_display)
 
-        # setup signals for preferences window
+        # setup signals for windows
         self.main_vm.open_prefs_requested.connect(self.prefs_window.show)
+        self.prefs_vm.window_style_changed.connect(self._update_theme)
 
         # initialize UI state
         self.page_view1.put_widget(self.display_view1)
@@ -131,7 +132,13 @@ class AppController:
         self.main_vm.switch_warning_visibility("size", False)
         self.main_vm.switch_warning_visibility("type", False)
 
+        self._update_theme()
+
         self.__logger.debug("UI components initialized")
+
+    def run(self) -> None:
+        self.main_window.show()
+        self.__logger.debug("Main window opened")
 
     def _update_display(self) -> None:
         has_img_l = self.page_vm1.has_image()
@@ -201,6 +208,9 @@ class AppController:
         else:
             self.main_vm.switch_warning_visibility("type", False)
 
-    def run(self) -> None:
-        self.main_window.show()
-        self.__logger.debug("Main window opened")
+    def _update_theme(self) -> None:
+        theme_str = Theme(self._user_config.theme).resolved_str()
+        apply_theme(theme_str)
+        self.page_view1.apply_icon_style(theme_str)
+        self.page_view2.apply_icon_style(theme_str)
+        self.main_window.apply_icon_style(theme_str)

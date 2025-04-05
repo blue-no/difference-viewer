@@ -65,14 +65,6 @@ class MainWindow(AutoResizedMainWindow):
         self.btnOpenPrefs.setObjectName("icon")
         self.frame.setObjectName("line")
 
-        self.btnOpenPrefs.setIcon(
-            QIcon(
-                get_resource_icon_path(
-                    AppConfig.current_theme.value + "/gear"
-                ).as_posix()
-            )
-        )
-
         self.btnSyncTurnFirst.clicked.connect(
             self._vm.turn_first_requested.emit
         )
@@ -107,6 +99,11 @@ class MainWindow(AutoResizedMainWindow):
             self.lytPageR.addWidget(widget)
         else:
             raise ValueError(f"Invalid location: {loc}")
+
+    def apply_icon_style(self, name: str) -> None:
+        self.btnOpenPrefs.setIcon(
+            QIcon(get_resource_icon_path(name + "/gear").as_posix())
+        )
 
     def _update_label_visibility(self, target: str, visible: bool) -> None:
         self.labels[target].setVisible(visible)

@@ -53,13 +53,6 @@ class PageView(QWidget):
         self.btnSelectFile.setIcon(
             QIcon(get_resource_icon_path("folder").as_posix())
         )
-        self.btnReload.setIcon(
-            QIcon(
-                get_resource_icon_path(
-                    AppConfig.current_theme.value + "/circle_arrow"
-                ).as_posix()
-            )
-        )
 
         self.page_validator = QIntValidator()
         self.txtCurPage.setValidator(self.page_validator)
@@ -80,6 +73,11 @@ class PageView(QWidget):
 
     def put_widget(self, widget: QWidget) -> None:
         self.lytPage.addWidget(widget)
+
+    def apply_icon_style(self, name: str) -> None:
+        self.btnReload.setIcon(
+            QIcon(get_resource_icon_path(name + "/circle_arrow").as_posix())
+        )
 
     @pyqtSlot()
     def _update_file_info(self) -> None:

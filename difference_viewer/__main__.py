@@ -64,7 +64,6 @@ def main() -> None:
         Theme,
         UserConfig,
         apply_theme,
-        get_system_theme,
     )
 
     # initialize user config
@@ -74,11 +73,8 @@ def main() -> None:
 
     # setup appearance
     theme = Theme(config.theme)
-    if theme == Theme.SYSTEM:
-        theme = get_system_theme()
-
     try:
-        apply_theme(theme)
+        apply_theme(theme.resolved_str())
     except Exception as e:
         logger.warning(f'Failed to load and apply style sheet: "{e}"')
 

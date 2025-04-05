@@ -26,6 +26,7 @@ from enum import Enum
 from pathlib import Path
 from typing import Any, ClassVar
 
+from PyQt5.QtCore import QCoreApplication, QTimer
 from PyQt5.QtWidgets import QApplication, QWidget
 
 
@@ -51,12 +52,18 @@ def apply_style(style: str, widget: QWidget) -> None:
         logging.warning(f"Style file not found: {style_fp}")
 
 
-def apply_theme(theme: Theme) -> None:
+def apply_theme(theme: Theme | str) -> None:
+    if isinstance(theme, str):
+        theme = Theme(theme)
+
     theme_fp = get_resource_theme_path(theme.value)
     try:
         with theme_fp.open("r", encoding="utf-8") as f:
             theme_qss = f.read()
-        QApplication.instance().setStyleSheet(theme_qss)
+        QCoreApplication.processEvents()
+        QTimer.singleShot(
+            0, lambda: QApplication.instance().setStyleSheet(theme_qss)
+        )
         AppConfig.current_theme = theme
     except FileNotFoundError:
         logging.warning(f"Theme file not found: {theme_fp}")
@@ -67,6 +74,11 @@ class Theme(Enum):
     LIGHT = "light"
     DARK = "dark"
     SYSTEM = "system"
+
+    def resolved_str(self) -> str:
+        if self == Theme.SYSTEM:
+            return get_system_theme().value
+        return self.value
 
 
 def get_system_theme() -> Theme:
